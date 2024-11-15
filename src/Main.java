@@ -2,46 +2,32 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        int[][] square = new int[5][5];
-        int sigrdze = 0;
-        int sigane = 0;
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.print("airchiet sigrdze ");
-        sigrdze = scanner.nextInt();
-        System.out.print("airchiet sigane ");
-        sigane = scanner.nextInt();
-
-        int dummy = 0;
-
-        int Min = 5;
-        int Max = 0;
-        int MinLine = 0;
-        int MaxLine = 0;
-
-        for(int i = 0; i <= 5; i++){
-            if(i == 5){
-                dummy = dummy + 1;
-                i= 0;
+        int[][] square = {
+                {1, 2, 3, 4},
+                {1, 2, 3, 4},
+                {1, 2, 3, 4},
+                {1, 2, 3, 4},
+        };
+        int gamokleba = 0;
+        int jami = 0;
+        boolean mzadaa = false;
+        for(int i = square.length-1; i >= 0; i--){
+            if(i==0){
+                i = square.length-1;
+                jami =+ square[i][square.length-gamokleba];
             }
-            if(dummy == 5){
-                break;
+            if(gamokleba==((square.length)/2)){
+                if (mzadaa == true){
+                    System.out.println(jami);
+                    break;
+                }
+                jami =+ i-gamokleba;
+                gamokleba = 0;
+                mzadaa = true;
             }
-            square[dummy][i] = (int) (Math.random() * 10)/2;
+            jami =+ square[i][square.length-gamokleba];
+            jami =+ square[i][square.length+gamokleba];
 
-            if (Min > square[dummy][i]){
-                Min = i;
-                MinLine = dummy;
-            }
-            if (Max > square[dummy][i]){
-                Max = i;
-                MaxLine = dummy;
-            }
         }
-        System.out.println("tqveni archeuli iyo " + square[sigrdze-1][sigane-1]);
-
-        System.out.println("maxsimaluri raodenoba iyo: " + square[MaxLine][Max] + "; " + MaxLine + " sigrdzis " + Max + " indexze");
-        System.out.println("minimaluri raodenoba iyo: " + square[MinLine][Min] + "; " + MinLine + " sigrdzis " + Min + " indexze");
-
     }
 }
